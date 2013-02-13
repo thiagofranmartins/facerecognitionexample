@@ -29,9 +29,14 @@ public class FaceRecognition extends FaceRecognizer {
 		public void imgRead() {
 			if (imgFile1.exists()) {
 				Log.i(TAG, "Reading pic1");
-				Mat pic1 = Highgui.imread(imgFile1.getAbsolutePath(), Highgui.CV_LOAD_IMAGE_GRAYSCALE); // doc file anh 1
-				images.add(pic1);
-				labels.add(0);
+				try {
+					Mat pic1 = Highgui.imread(imgFile1.getAbsolutePath(), Highgui.CV_LOAD_IMAGE_GRAYSCALE); // doc file anh 1
+					images.add(pic1);
+					labels.add(0);
+				} catch (Exception ex) {
+					Log.e(TAG, ex.getMessage());
+				}
+				
 				Log.i(TAG, "Read pic1 successfully");
 			}
 			
